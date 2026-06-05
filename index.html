@@ -119,6 +119,38 @@
       color: var(--accent);
     }
 
+    /* Nav links */
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 0;
+      align-items: center;
+      margin-bottom: 64px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 4px 12px;
+      border-radius: 4px;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-links .nav-sep {
+      color: var(--border);
+      font-size: 13px;
+    }
+
+    .nav-links a.nav-linkedin {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
     /* Section label */
     .section-label {
       font-size: 11px;
@@ -280,11 +312,21 @@
         Technology leader with 15+ years across networks, data centers, and cloud.
         I focus on cloud strategy, enterprise architecture, and building teams that deliver — not just design.
       </p>
-      <div class="hero-links">
-        <a href="https://www.linkedin.com/in/jirisolc/" class="btn btn-primary" target="_blank">LinkedIn ↗</a>
-        <a href="#work" class="btn btn-ghost">See my work</a>
-      </div>
     </section>
+  </div>
+
+  <div class="container">
+    <nav class="nav-links">
+      <a href="#work">What I do</a>
+      <span class="nav-sep">·</span>
+      <a href="#learning">Learning</a>
+      <span class="nav-sep">·</span>
+      <a href="#career">Career</a>
+      <span class="nav-sep">·</span>
+      <a href="#certs">Certifications</a>
+      <span class="nav-sep">·</span>
+      <a href="https://www.linkedin.com/in/jirisolc/" target="_blank" class="nav-linkedin">LinkedIn ↗</a>
+    </nav>
   </div>
 
   <div class="divider"></div>
@@ -320,7 +362,7 @@
   <div class="divider"></div>
 
   <div class="container">
-    <section>
+    <section id="learning">
       <p class="section-label">Currently learning</p>
       <div class="learning-grid">
         <div class="learning-item">
@@ -358,7 +400,7 @@
   <div class="divider"></div>
 
   <div class="container">
-    <section>
+    <section id="career">
       <p class="section-label">Career</p>
       <div class="timeline">
         <div class="timeline-item">
@@ -444,7 +486,7 @@
   <div class="divider"></div>
 
   <div class="container">
-    <section>
+    <section id="certs">
       <p class="section-label">Certifications & skills</p>
       <div class="cert-groups">
         <div class="cert-group">
@@ -469,8 +511,8 @@
         <div class="cert-group">
           <p class="cert-vendor">Microsoft</p>
           <div class="tags">
-            <span class="tag microsoft">Microsoft Certified: Azure Fundamentals (AZ-900)</span>
-            <span class="tag microsoft">Microsoft 365 Certified: Fundamentals (MS-900)</span>
+            <span class="tag microsoft">Microsoft Certified: Azure Fundamentals</span>
+            <span class="tag microsoft">Microsoft 365 Certified: Fundamentals</span>
           </div>
         </div>
         <div class="cert-group">

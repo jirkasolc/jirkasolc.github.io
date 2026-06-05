@@ -1,5 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jirka Šolc</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #fafaf8;
+      --surface: #ffffff;
+      --border: #e8e8e4;
+      --text: #1a1a18;
+      --muted: #7a7a74;
+      --accent: #2d6a4f;
+      --accent-light: #e8f5ee;
+      --tag-bg: #f0f0ec;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 64px 0;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 24px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 96px 0 72px;
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: #235c40; }
+
+    .btn-ghost {
+      color: var(--muted);
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Nav links */
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 0;
+      align-items: center;
+      margin-bottom: 64px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 4px 12px;
+      border-radius: 4px;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-links .nav-sep {
+      color: var(--border);
+      font-size: 13px;
+    }
+
+    .nav-links a.nav-linkedin {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Section label */
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 32px;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 520px) { .cards { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: border-color 0.15s;
+    }
+
+    .card:hover { border-color: var(--accent); }
+
+    .card-icon { font-size: 22px; margin-bottom: 12px; }
+
+    .card h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+
+    .card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* Timeline */
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-item:last-child { border-bottom: none; }
+
+    .timeline-year { font-size: 12px; color: var(--muted); padding-top: 2px; }
+
+    .timeline-content h3 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+
+    .timeline-content .company { font-size: 13px; color: var(--accent); margin-bottom: 4px; }
+
+    .timeline-content p { font-size: 13px; color: var(--muted); }
+
+    /* Learning */
+    .learning-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 520px) { .learning-grid { grid-template-columns: 1fr; } }
+
+    .learning-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+
+    .learning-emoji { font-size: 20px; line-height: 1; margin-top: 1px; }
+
+    .learning-item h4 { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+
+    .learning-item p { font-size: 12px; color: var(--muted); }
+
+    /* Tags */
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .tag {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: var(--tag-bg);
+      color: var(--text);
+    }
+
+    /* Vendor colors */
+    .tag.aws {
+      background: #FFF3E0;
+      color: #C45000;
+      border: 1px solid #FFCC80;
+    }
+
+    .tag.opengroup {
+      background: #E8F5EE;
+      color: #00843D;
+      border: 1px solid #A0D8B8;
+    }
+
+    .tag.microsoft {
+      background: #EEF3FD;
+      color: #0067B8;
+      border: 1px solid #B3C9F0;
+    }
+
+    .tag.cisco {
+      background: #E6F6FB;
+      color: #007FAD;
+      border: 1px solid #9DD8EE;
+    }
+
+    .tag.itil {
+      background: #F4EEF9;
+      color: #6B2F9A;
+      border: 1px solid #CDA8E8;
+    }
+
+    .tag.ipma {
+      background: #EAF0FB;
+      color: #1A3C8F;
+      border: 1px solid #A8BEE8;
+    }
+
+    /* Cert groups */
+    .cert-groups { display: flex; flex-direction: column; gap: 24px; }
+
+    .cert-vendor {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
 </head>
 <body>
-  <p>My HTML Paragraph ....</p>
+
+  <div class="container">
+    <section class="hero">
+      <p class="hero-eyebrow">Prague, Czech Republic</p>
+      <h1>Hi, I'm Jirka.<br/>I make IT <span>work.</span></h1>
+      <p class="hero-sub">
+        Technology leader with 15+ years across networks, data centers, and cloud.
+        I focus on cloud strategy, enterprise architecture, and building teams that deliver — not just design.
+      </p>
+    </section>
+  </div>
+
+  <div class="container">
+    <nav class="nav-links">
+      <a href="#work">What I do</a>
+      <span class="nav-sep">·</span>
+      <a href="#learning">Learning</a>
+      <span class="nav-sep">·</span>
+      <a href="#career">Career</a>
+      <span class="nav-sep">·</span>
+      <a href="#certs">Certifications</a>
+      <span class="nav-sep">·</span>
+      <a href="https://www.linkedin.com/in/jirisolc/" target="_blank" class="nav-linkedin">LinkedIn ↗</a>
+    </nav>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="container">
+    <section id="work">
+      <p class="section-label">What I do</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">☁️</div>
+          <h3>Cloud Strategy & Architecture</h3>
+          <p>Guiding enterprises through cloud adoption — from first steps to scalable, operable platforms.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏗️</div>
+          <h3>Enterprise Architecture</h3>
+          <p>TOGAF-certified architect connecting business goals to practical, deliverable technology.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🤝</div>
+          <h3>Team Leadership</h3>
+          <p>Leading AWS Cloud & Platforms teams at ALEF CZ — portfolio, partnerships, and people.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔧</div>
+          <h3>IT Service Management</h3>
+          <p>ITIL4 practitioner. Making sure operations are as solid as the architecture behind them.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="container">
+    <section id="learning">
+      <p class="section-label">Currently learning</p>
+      <div class="learning-grid">
+        <div class="learning-item">
+          <span class="learning-emoji">🏛️</span>
+          <div>
+            <h4>AWS Architecture</h4>
+            <p>Deepening cloud design skills — Solutions Architect path</p>
+          </div>
+        </div>
+        <div class="learning-item">
+          <span class="learning-emoji">🤖</span>
+          <div>
+            <h4>AI Skills</h4>
+            <p>Practical applications of AI in enterprise context</p>
+          </div>
+        </div>
+        <div class="learning-item">
+          <span class="learning-emoji">⚙️</span>
+          <div>
+            <h4>DevOps</h4>
+            <p>CI/CD pipelines, automation, infrastructure as code</p>
+          </div>
+        </div>
+        <div class="learning-item">
+          <span class="learning-emoji">🌿</span>
+          <div>
+            <h4>Git & GitHub</h4>
+            <p>This very page is part of the journey</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="container">
+    <section id="career">
+      <p class="section-label">Career</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">09/2025 →</div>
+          <div class="timeline-content">
+            <h3>Cloud & Platforms Team Leader</h3>
+            <p class="company">ALEF NULA</p>
+            <p>Leads ALEF's Cloud & Platforms practice focused on AWS — presales, delivery, operations, and team development. Trusted advisor for customer cloud adoption and modernization.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">04/2023 – 08/2025</div>
+          <div class="timeline-content">
+            <h3>Architecture Innovation Team Leader</h3>
+            <p class="company">ALEF NULA</p>
+            <p>Led the team identifying and bringing new technologies into ALEF's portfolio — AWS cloud, enterprise architecture, observability, digitalisation, and ITSM.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">09/2018 – 03/2023</div>
+          <div class="timeline-content">
+            <h3>Enterprise / Solution Architect</h3>
+            <p class="company">ALEF NULA</p>
+            <p>Designed enterprise and solution architectures across cloud, networking, security, and data center. Delivered ICT strategies, transformation roadmaps, and presales proposals.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">05/2015 – 07/2018</div>
+          <div class="timeline-content">
+            <h3>Infrastructure Delivery Manager</h3>
+            <p class="company">ICZ a.s.</p>
+            <p>Led delivery and operations teams across networking, data center, collaboration, security, and project management. Founded the Solution Architecture team.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">02/2012 – 04/2015</div>
+          <div class="timeline-content">
+            <h3>Collaboration Team Leader</h3>
+            <p class="company">ICZ a.s.</p>
+            <p>Led a team delivering enterprise collaboration solutions — voice, video, messaging, conferencing — primarily based on Cisco technologies.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">11/2008 – 01/2012</div>
+          <div class="timeline-content">
+            <h3>Systems Engineer / Consultant</h3>
+            <p class="company">ICZ a.s.</p>
+            <p>Presales consultant and implementation engineer focused on networking and Unified Communications. Contributed to managed services solutions.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">06/2006 – 10/2008</div>
+          <div class="timeline-content">
+            <h3>Network Engineer</h3>
+            <p class="company">ICZ a.s.</p>
+            <p>Designed, implemented, and supported managed infrastructure for SMBs — networking, wireless, security, and unified communications.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="section-label" style="margin-top: 48px;">Education</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">09/2003 – 06/2008</div>
+          <div class="timeline-content">
+            <h3>Ing. (MSc) — Information Technologies</h3>
+            <p class="company">University of Economics, Prague (VŠE)</p>
+            <p>Faculty of Informatics and Statistics</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1998 – 2002</div>
+          <div class="timeline-content">
+            <h3>Technical Lyceum</h3>
+            <p class="company">SPŠ Sdělovací techniky Panská, Prague</p>
+            <p>Secondary technical school — telecommunications and electronics</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="container">
+    <section id="certs">
+      <p class="section-label">Certifications & skills</p>
+      <div class="cert-groups">
+        <div class="cert-group">
+          <p class="cert-vendor">Amazon Web Services</p>
+          <div class="tags">
+            <span class="tag aws">AWS Certified Security – Specialty</span>
+            <span class="tag aws">AWS Certified Solutions Architect – Associate</span>
+            <span class="tag aws">AWS Certified Cloud Practitioner</span>
+            <span class="tag aws">AWS Certified AI Practitioner</span>
+          </div>
+        </div>
+        <div class="cert-group">
+          <p class="cert-vendor">The Open Group</p>
+          <div class="tags">
+            <span class="tag opengroup">TOGAF Enterprise Architecture Practitioner</span>
+            <span class="tag opengroup">TOGAF 9 Certified</span>
+            <span class="tag opengroup">TOGAF 9 Foundation</span>
+            <span class="tag opengroup">ArchiMate 3 Practitioner</span>
+            <span class="tag opengroup">ArchiMate 3 Foundation</span>
+          </div>
+        </div>
+        <div class="cert-group">
+          <p class="cert-vendor">Microsoft</p>
+          <div class="tags">
+            <span class="tag microsoft">Microsoft Certified: Azure Fundamentals</span>
+            <span class="tag microsoft">Microsoft 365 Certified: Fundamentals</span>
+          </div>
+        </div>
+        <div class="cert-group">
+          <p class="cert-vendor">Cisco</p>
+          <div class="tags">
+            <span class="tag cisco">CCNP Collaboration</span>
+            <span class="tag cisco">CCNA – Cisco Certified Network Associate</span>
+            <span class="tag cisco">CMNA – Certified Meraki Networking Associate</span>
+          </div>
+        </div>
+        <div class="cert-group">
+          <p class="cert-vendor">ITIL</p>
+          <div class="tags">
+            <span class="tag itil">ITIL® Foundation – IT Service Management</span>
+          </div>
+        </div>
+        <div class="cert-group">
+          <p class="cert-vendor">IPMA</p>
+          <div class="tags">
+            <span class="tag ipma">Certified Project Manager IPMA® Level C</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider"></div>
+
+  <footer>
+    <p>Jirka Šolc · Prague · <a href="https://www.linkedin.com/in/jirisolc/" target="_blank">linkedin.com/in/jirisolc</a></p>
+    <p style="margin-top: 6px; font-size: 12px;">Built with HTML & CSS · Hosted on GitHub Pages · Part of a DevOps learning journey</p>
+  </footer>
+
 </body>
+</html>

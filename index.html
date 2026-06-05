@@ -202,17 +202,49 @@
     .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 
     .tag {
-      background: var(--tag-bg);
-      color: var(--text);
       font-size: 12px;
       font-weight: 500;
       padding: 6px 12px;
       border-radius: 20px;
+      background: var(--tag-bg);
+      color: var(--text);
     }
 
-    .tag.highlight {
-      background: var(--accent-light);
-      color: var(--accent);
+    /* Vendor colors */
+    .tag.aws {
+      background: #FFF3E0;
+      color: #C45000;
+      border: 1px solid #FFCC80;
+    }
+
+    .tag.opengroup {
+      background: #EAF2FB;
+      color: #005B99;
+      border: 1px solid #AECDE8;
+    }
+
+    .tag.microsoft {
+      background: #EEF3FD;
+      color: #0067B8;
+      border: 1px solid #B3C9F0;
+    }
+
+    .tag.cisco {
+      background: #E6F6FB;
+      color: #007FAD;
+      border: 1px solid #9DD8EE;
+    }
+
+    .tag.itil {
+      background: #F4EEF9;
+      color: #6B2F9A;
+      border: 1px solid #CDA8E8;
+    }
+
+    .tag.ipma {
+      background: #EAF0FB;
+      color: #1A3C8F;
+      border: 1px solid #A8BEE8;
     }
 
     /* Cert groups */
@@ -418,47 +450,47 @@
         <div class="cert-group">
           <p class="cert-vendor">Amazon Web Services</p>
           <div class="tags">
-            <span class="tag highlight">AWS Certified Security – Specialty</span>
-            <span class="tag highlight">AWS Certified Solutions Architect – Associate</span>
-            <span class="tag highlight">AWS Certified Cloud Practitioner</span>
-            <span class="tag highlight">AWS Certified AI Practitioner</span>
+            <span class="tag aws">AWS Certified Security – Specialty</span>
+            <span class="tag aws">AWS Certified Solutions Architect – Associate</span>
+            <span class="tag aws">AWS Certified Cloud Practitioner</span>
+            <span class="tag aws">AWS Certified AI Practitioner</span>
           </div>
         </div>
         <div class="cert-group">
           <p class="cert-vendor">The Open Group</p>
           <div class="tags">
-            <span class="tag highlight">TOGAF Enterprise Architecture Practitioner</span>
-            <span class="tag highlight">TOGAF 9 Certified</span>
-            <span class="tag highlight">TOGAF 9 Foundation</span>
-            <span class="tag highlight">ArchiMate 3 Practitioner</span>
-            <span class="tag highlight">ArchiMate 3 Foundation</span>
+            <span class="tag opengroup">TOGAF Enterprise Architecture Practitioner</span>
+            <span class="tag opengroup">TOGAF 9 Certified</span>
+            <span class="tag opengroup">TOGAF 9 Foundation</span>
+            <span class="tag opengroup">ArchiMate 3 Practitioner</span>
+            <span class="tag opengroup">ArchiMate 3 Foundation</span>
           </div>
         </div>
         <div class="cert-group">
           <p class="cert-vendor">Microsoft</p>
           <div class="tags">
-            <span class="tag">Microsoft Certified: Azure Fundamentals (AZ-900)</span>
-            <span class="tag">Microsoft 365 Certified: Fundamentals (MS-900)</span>
+            <span class="tag microsoft">Microsoft Certified: Azure Fundamentals (AZ-900)</span>
+            <span class="tag microsoft">Microsoft 365 Certified: Fundamentals (MS-900)</span>
           </div>
         </div>
         <div class="cert-group">
           <p class="cert-vendor">Cisco</p>
           <div class="tags">
-            <span class="tag">CCNP Collaboration</span>
-            <span class="tag">CCNA – Cisco Certified Network Associate</span>
-            <span class="tag">CMNA – Certified Meraki Networking Associate</span>
+            <span class="tag cisco">CCNP Collaboration</span>
+            <span class="tag cisco">CCNA – Cisco Certified Network Associate</span>
+            <span class="tag cisco">CMNA – Certified Meraki Networking Associate</span>
           </div>
         </div>
         <div class="cert-group">
           <p class="cert-vendor">ITIL</p>
           <div class="tags">
-            <span class="tag highlight">ITIL® Foundation – IT Service Management</span>
+            <span class="tag itil">ITIL® Foundation – IT Service Management</span>
           </div>
         </div>
         <div class="cert-group">
           <p class="cert-vendor">IPMA</p>
           <div class="tags">
-            <span class="tag">Certified Project Manager IPMA® Level C</span>
+            <span class="tag ipma">Certified Project Manager IPMA® Level C</span>
           </div>
         </div>
       </div>
